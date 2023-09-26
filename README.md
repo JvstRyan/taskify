@@ -1,8 +1,3 @@
-# React + Vite
+# Taskify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Taskify is a user-friendly solution designed to streamline and simplify your daily to-do lists. With an intuitive interface and efficient task entry system, you can quickly add, edit, and organize tasks without unnecessary complexity. The application offers clear visual cues and priority markers to help you easily identify and prioritize tasks based on deadlines, importance, or projects.
