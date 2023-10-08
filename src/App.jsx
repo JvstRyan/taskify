@@ -3,8 +3,8 @@ import TaskForm from "./components/Task-Management/TaskForm"
 import TaskList from './components/Task-Management/TaskList'
 import ActiveTasksList from './components/Task-Management/ActiveTasksList'
 import CompletedTaskList from './components/Task-Management/CompletedTaskList'
-import SideBar from './components/UI/SideBar/SideBar'
-import classes from './App.module.css'
+import { Box, Container, Grid, GridItem, SimpleGrid } from '@chakra-ui/react'
+
 
 function App() {  
 
@@ -71,20 +71,20 @@ function App() {
   return (
     <>
 
-    <SideBar />
-    <section className={classes['app-container-inside']}>
-      <article className={classes['app-positioning']}>
-        <TaskForm onReceiveTask={onReceiveTask}/>
-        <TaskList task={userInput} moveToActiveHandler={moveToActiveHandler} />
-      </article>
-      <article>
-        <ActiveTasksList activeTask={activeTask} completeHandler={moveToCompleteHandler}/>
-      </article>
-      <article>
-        <CompletedTaskList completedTask={completedTask} deleteTask={deleteTaskHandler} />
-      </article>
-    </section>
-    
+    <Container minWidth={"100%"} justifyContent={'center'}>
+      <SimpleGrid m={10} minChildWith='400px' columns={[1, 1, 3]} spacing='30px'>
+        <GridItem w='100%' direction={'column'}>
+          <TaskForm onReceiveTask={onReceiveTask}/>
+          <TaskList task={userInput} moveToActiveHandler={moveToActiveHandler} />
+        </GridItem>
+        <GridItem  w='100%' direction={'column'}>
+          <ActiveTasksList activeTask={activeTask} completeHandler={moveToCompleteHandler}/>
+        </GridItem>
+        <GridItem  w='100%' direction={'column'}>
+          <CompletedTaskList completedTask={completedTask} deleteTask={deleteTaskHandler} />
+        </GridItem>  
+      </SimpleGrid>
+    </Container>
       
     </>
   )

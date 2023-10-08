@@ -5,8 +5,8 @@ import logo from '../../../assets/logo.svg'
 const SideBar = () => {
     return (
         <>
-        <section className={classes['app-menu']}>
-            <article className={classes['menu-positioning']}>
+        <section>
+            <article>
              <img src={logo}></img>
             </article>
         </section>

@@ -1,6 +1,6 @@
 import React from 'react'
-import classes from "./CompletedTaskList.module.css"
-import trash from '../../assets/trash.png'
+import {FaTrash} from 'react-icons/fa'
+import { Flex, Spacer, Badge } from '@chakra-ui/react'
 
 
 const CompletedTaskList = (props) => {
@@ -11,19 +11,23 @@ const CompletedTaskList = (props) => {
 
     return (
         <>  
-             <section className={classes['active-container']}>
-                    <ul className={classes['task-list']}>
-                    <label className={classes['active-header']}>Completed</label>
+            
+                <ul>
+                    <label>Completed</label>
                         {props.completedTask.map(task => (
-                        <li className={classes.tasks} key={task.id}>
+                        <Flex mt={2} gap={2} padding={2} border="1px" borderColor="blue.500" borderRadius={5} key={task.id}>
                             {task.name}
-                            <button onClick={() => deleteHandler(task.id)} className={classes['button-class']}>
-                                <img src={trash}></img>
+                            <Spacer />
+                            <Badge mt={0.5} colorScheme='green' variant='subtle'>
+                                Completed
+                            </Badge>
+                            <button onClick={() => deleteHandler(task.id)}>
+                               <FaTrash color='#3182ce' />
                             </button>
-                        </li>
+                        </Flex>
                         ))}
-                    </ul>
-                </section>
+                </ul>
+                
         </>
     )
 }

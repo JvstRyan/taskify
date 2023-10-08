@@ -1,5 +1,6 @@
-import React from "react";
-import classes from './ActiveTasksList.module.css'
+import { Flex, Spacer, Badge } from "@chakra-ui/react";
+import {BsPlusSquareFill} from 'react-icons/bs'
+
 
 const ActiveTasksList = (props) => {
 
@@ -10,17 +11,21 @@ const ActiveTasksList = (props) => {
     return (
         <>  
         
-               <section className={classes['active-container']}>
-                    <ul className={classes['task-list']}>
-                    <label className={classes['active-header']}>Active</label>
+               
+                <ul>
+                    <label>Active</label>
                         {props.activeTask.map(task => (
-                        <li className={classes.tasks} key={task.id}>
+                        <Flex mt={2} gap={2} padding={2} border="1px" borderColor="blue.500" borderRadius={5} key={task.id}>
                             {task.name}
-                            <button onClick={() => moveToComplete(task.id)} className={classes['button-class']}>+</button>
-                        </li>
+                            <Spacer />
+                            <Badge mt={0.5} colorScheme='red' variant='subtle'>
+                                Active
+                            </Badge>
+                            <button onClick={() => moveToComplete(task.id)}><BsPlusSquareFill color="#3182ce" /></button>
+                        </Flex>
                         ))}
-                    </ul>
-                </section>
+                </ul>
+                
         </>
     )
 }

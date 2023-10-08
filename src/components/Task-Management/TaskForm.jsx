@@ -1,5 +1,8 @@
+import { Box, Button, Container, FormControl, FormLabel, Text, Input, Alert, AlertIcon, AlertTitle, AlertDescription, useDisclosure, Flex} from '@chakra-ui/react';
 import React, { useState } from 'react';
-import classes from './TaskForm.module.css'
+import {AiOutlinePlus} from 'react-icons/ai'
+
+
 
 
 
@@ -36,24 +39,28 @@ const TaskForm = (props) => {
     }
 
 
+
     return (
-        
-        <section className={classes['form-container']}>
-            <form onSubmit={onSubmitHandler}>
-                <div className={`${classes['form-class']} ${!isValid && classes.invalid}`}>
-                    <label>Tasks</label>
-                    <input 
-                    placeholder='please enter your task...'
+       <>
+        <form onSubmit={onSubmitHandler}>
+            <FormControl>
+                <FormLabel>Tasks</FormLabel>
+                    <Input
+                    borderColor={!isValid ? 'red.300' : '#3182ce'}
+                    size='md'
+                    placeholder={!isValid ? 'Please enter a valid task' : 'Please enter your task'}
                     value={userInput} 
                     type="text"
                     onChange={onChangeHandler}
                     id='0'
                     >
-                    </input>
-                    <button type='submit'>Add Task +</button>
-                </div>
-            </form>
-        </section>
+                    </Input>
+                    {!isValid && <Text>Task must contain atleast 1 charachter</Text>}
+                    <Button gap={2} color="white" _hover={{background: "blue.600"}}  bg="blue.500" w="100%" mt={3} type='submit'>Add Task <AiOutlinePlus color='white'/></Button>
+            </FormControl>
+        </form>
+        </>
+       
     )
 }
 
