@@ -1,11 +1,11 @@
-import { Flex, Spacer, Badge } from "@chakra-ui/react";
+import { Flex, Spacer, Badge, list } from "@chakra-ui/react";
 import {BsPlusSquareFill} from 'react-icons/bs'
 
 
-const ActiveTasksList = (props) => {
+const ActiveTasksList = ({activeTask, completeHandler}) => {
 
     const moveToComplete = (id) => {
-        props.completeHandler(id)
+        completeHandler(id)
     }
 
     return (
@@ -14,7 +14,7 @@ const ActiveTasksList = (props) => {
                
                 <ul>
                     <label>Active</label>
-                        {props.activeTask.map(task => (
+                        {activeTask?.map(task => (
                         <Flex mt={2} gap={2} padding={2} border="1px" borderColor="blue.500" borderRadius={5} key={task.id}>
                             {task.name}
                             <Spacer />

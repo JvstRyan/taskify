@@ -2,11 +2,11 @@ import {Flex, Spacer, Badge} from "@chakra-ui/react";
 import {BsPlusSquareFill} from 'react-icons/bs'
 
 
-const TaskList = (props) => {
+const TaskList = ({task, onMoveToActiveHandler}) => {
 
 
     const moveToActiveHandler = (id) => {
-        props.moveToActiveHandler(id)
+        onMoveToActiveHandler(id)
     }
 
     // 1. Mapping over the user-input that I obtained via props from App.jsx
@@ -16,7 +16,7 @@ const TaskList = (props) => {
         <>
        
             <ul>
-                {props.task.map( task => (
+                {task.map( task => (
                  <Flex mt={3} gap={2} padding={2} border="1px" borderColor="blue.500" borderRadius={5} key={task.id}>
                      {task.name}
                       <Spacer />

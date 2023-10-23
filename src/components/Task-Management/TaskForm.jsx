@@ -7,7 +7,7 @@ import {AiOutlinePlus} from 'react-icons/ai'
 
 
 
-const TaskForm = (props) => {
+const TaskForm = ({onReceiveTask}) => {
 
 
     //Adding state to store input
@@ -25,7 +25,7 @@ const TaskForm = (props) => {
             setIsValid(false)
             return;
         }
-        props.onReceiveTask(userInput)
+        onReceiveTask(userInput)
         setUserInput("")
     }
 
@@ -38,7 +38,7 @@ const TaskForm = (props) => {
         setUserInput(e.target.value)
     }
 
-
+  
 
     return (
        <>
@@ -56,7 +56,7 @@ const TaskForm = (props) => {
                     >
                     </Input>
                     {!isValid && <Text>Task must contain atleast 1 charachter</Text>}
-                    <Button gap={2} color="white" _hover={{background: "blue.600"}}  bg="blue.500" w="100%" mt={3} type='submit'>Add Task <AiOutlinePlus color='white'/></Button>
+                    <Button gap={2} _hover={{bg:'blue.500'}}  bg='none' border='1px' borderColor="blue.500" w="100%" mt={3} type='submit'>Add Task <AiOutlinePlus/></Button>
             </FormControl>
         </form>
         </>

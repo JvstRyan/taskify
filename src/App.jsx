@@ -3,22 +3,25 @@ import TaskForm from "./components/Task-Management/TaskForm"
 import TaskList from './components/Task-Management/TaskList'
 import ActiveTasksList from './components/Task-Management/ActiveTasksList'
 import CompletedTaskList from './components/Task-Management/CompletedTaskList'
-import { Box, Container, Grid, GridItem, SimpleGrid } from '@chakra-ui/react'
+import { Box, Container, GridItem, SimpleGrid } from '@chakra-ui/react'
+import Navbar from './components/UI/Navbar/Navbar'
 
 
 function App() {  
 
-  //1. Storing the data in State that I received from TaskForm.jsx
+
+  // 1. Storing the data in State that I received from TaskForm.jsx
 
   const [userInput, setUserInput] = useState([])
-  //1. When data passes through the prop it gets sent to this function
-  //2. The function updates state by taking the given data and returns an array
+  // 1. When data passes through the prop it gets sent to this function
+  // 2. The function updates state by taking the given data and returns an array
 
   const [activeTask, setActiveTask] = useState([])
   const [completedTask, setCompletedTask] = useState([])
   const [deletedTask, setDeletedTask] = useState([])
 
-  const onReceiveTask = (userInput) => {
+  
+const onReceiveTask = (userInput) => {
     setUserInput((prevUserList) => {
       return [...prevUserList, {name: userInput, id: crypto.randomUUID()}]
     })
@@ -67,27 +70,33 @@ function App() {
     setCompletedTask(prevCompletedInput => prevCompletedInput.filter(task => task.id !== id))
     setDeletedTask(prevDeletedInput => prevDeletedInput.filter(task => task.id !== id))
   }
+
+
   
   return (
     <>
-
+    <Box>
+    <Navbar />
+    </Box>
     <Container minWidth={"100%"} justifyContent={'center'}>
-      <SimpleGrid m={10} minChildWith='400px' columns={[1, 1, 3]} spacing='30px'>
+      <SimpleGrid columns={[1, 1, 3]} spacing='30px'>
         <GridItem w='100%' direction={'column'}>
           <TaskForm onReceiveTask={onReceiveTask}/>
-          <TaskList task={userInput} moveToActiveHandler={moveToActiveHandler} />
+          <TaskList task={userInput} onMoveToActiveHandler={moveToActiveHandler} />
         </GridItem>
         <GridItem  w='100%' direction={'column'}>
           <ActiveTasksList activeTask={activeTask} completeHandler={moveToCompleteHandler}/>
         </GridItem>
         <GridItem  w='100%' direction={'column'}>
-          <CompletedTaskList completedTask={completedTask} deleteTask={deleteTaskHandler} />
+          <CompletedTaskList completedTask={completedTask} deleteTask={deleteTaskHandler}/>
         </GridItem>  
       </SimpleGrid>
     </Container>
-      
     </>
   )
 }
 
 export default App
+
+
+

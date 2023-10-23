@@ -3,10 +3,10 @@ import {FaTrash} from 'react-icons/fa'
 import { Flex, Spacer, Badge } from '@chakra-ui/react'
 
 
-const CompletedTaskList = (props) => {
+const CompletedTaskList = ({deleteTask, completedTask}) => {
 
     const deleteHandler = (id) => {
-        props.deleteTask(id)
+        deleteTask(id)
     }
 
     return (
@@ -14,7 +14,7 @@ const CompletedTaskList = (props) => {
             
                 <ul>
                     <label>Completed</label>
-                        {props.completedTask.map(task => (
+                        {completedTask?.map(task => (
                         <Flex mt={2} gap={2} padding={2} border="1px" borderColor="blue.500" borderRadius={5} key={task.id}>
                             {task.name}
                             <Spacer />
