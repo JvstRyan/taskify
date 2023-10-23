@@ -1,5 +1,4 @@
-import { Button, SimpleGrid, Box, Heading, Text, Image } from '@chakra-ui/react'
-import blob from '../assets/blob.svg'
+import { Button, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/UI/Navbar/Navbar'
